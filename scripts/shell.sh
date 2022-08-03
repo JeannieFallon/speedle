@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJ=$1
+NAME=$1
 PORT=$2
 
 #FIXME workdir should be directly in container root
@@ -12,6 +12,6 @@ exec docker run -it --rm \
     --publish ${PORT}:${PORT} \
     --volume `pwd`:`pwd` \
     --workdir `pwd` \
-    --name ${PROJ}\
-    --hostname debian \
-    ${PROJ}
+    --name ${NAME}\
+    --hostname ${NAME} \
+    ${NAME}

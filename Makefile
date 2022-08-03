@@ -1,15 +1,26 @@
 PROJ=speedle
 PORT=8080
+DEV=dev
 
 PY_FILES=`find . -name '*.py'`
 
-.PHONY: image # Build Docker development image
-image:
-	scripts/image.sh $(PROJ)
+### REL container used to deploy app ###
+
+.PHONY: speedle # Build & run Speedle Docker container on exposed port
+speedle:
+	scripts/speedle.sh $(PROJ) $(PORT)
+
+### DEV container used to format & test ###
+
+.PHONY: dev # Build Docker development image
+dev:
+	scripts/dev.sh  $(PROJ)_$(DEV)
 
 .PHONY: shell # Run shell into dev container with port exposed
 shell:
-	scripts/shell.sh $(PROJ) $(PORT)
+	scripts/shell.sh $(PROJ)_$(DEV) $(PORT)
+
+### For use inside DEV container ###
 
 .PHONY: format # Run Black Python code formatter
 format:

@@ -2,7 +2,7 @@ import errno
 
 import pytest
 
-import src.speedle
+import app
 
 
 INDEX_PLACEHOLDER = "Speedle ~ All of the guesses, none of the time"
@@ -10,5 +10,5 @@ INDEX_PLACEHOLDER = "Speedle ~ All of the guesses, none of the time"
 
 class TestSpeedle:
     def test_index(self):
-        retval = src.speedle.index()
+        retval = app.index()
         assert retval == INDEX_PLACEHOLDER
