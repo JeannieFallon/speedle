@@ -1,0 +1,7 @@
+# dev tools
+[._]*.sw[a-p]
+
+# build output
+bin/
+build/
+__pycache__
