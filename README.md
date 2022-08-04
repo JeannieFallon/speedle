@@ -1,21 +1,36 @@
 # speedle
 
-Wordle: Panic Edition
+:fire: Wordle: Panic Edition :fire:
 
 ## Usage
-- Build & run development image
+Speedle is available as a containerized Flask application.
+
+### System Requirements
+- Docker engine
+- `make`
+
+### Instructions
+1. Clone repo
+2. From project root, run `make speedle`
+3. Application is accessbile on a web browser at `localhost:5555`
+
+
+## Development
+- Build & open shell into development image:
 ```
-make image
+make dev
 make shell
 ```
 
-- Inside container, Flask app
+- Targets for Black code formatter and unit tests:
 ```
-python src/speedle.py
+make format
+make test
 ```
 
-- Hit in browser on `localhost:8080`
+- Inside container, run the Flask app manually:
+```
+make run
+```
 
-
-## TODO
-- Fully containerize app: use Docker image for deployment, not just development
+- Hit in browser on `localhost:5555`
