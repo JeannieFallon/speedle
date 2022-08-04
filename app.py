@@ -5,10 +5,6 @@ import flask
 
 app = flask.Flask(__name__)
 
-# User non-routable for Docker networking
-ADDR = "0.0.0.0"
-PORT = 8080
-
 
 @app.route("/")
 def index():
@@ -16,7 +12,7 @@ def index():
 
 
 def main():
-    app.run(host=ADDR, port=PORT, debug=True)
+    app.run()
     return 0
 
 

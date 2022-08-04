@@ -10,5 +10,5 @@ docker run -it --rm \
     --volume `pwd`:`pwd` \
     --workdir `pwd` \
     --name ${NAME}\
-    --hostname debian \
+    --hostname ${NAME} \
     ${NAME}

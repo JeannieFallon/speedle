@@ -1,5 +1,6 @@
 PROJ=speedle
-PORT=8080
+HOST=0.0.0.0
+PORT=5555
 DEV=dev
 
 PY_FILES=`find . -name '*.py'`
@@ -29,6 +30,12 @@ format:
 .PHONY: test # Run unit tests
 test:
 	python -m pytest -vv
+
+.PHONY: run # Run Speedle in DEBUG
+run:
+	scripts/run.sh $(HOST) $(PORT)
+
+### Helper targets ####
 
 .PHONY: clean # Remove all build content
 clean:

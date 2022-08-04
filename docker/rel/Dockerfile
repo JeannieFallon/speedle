@@ -16,6 +16,4 @@ RUN python -m pip install --upgrade pip && \
 #FIXME only copy app files
 COPY . .
 
-#FIXME should flask invocation go here or in source?
-#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-CMD [ "python", "app.py" ]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5555"]
