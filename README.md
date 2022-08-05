@@ -1,6 +1,6 @@
-# speedle
+# :checkered_flag: speedle :checkered_flag:
 
-:fire: Wordle: Panic Edition :fire:
+Wordle: Panic Edition
 
 ## Usage
 Speedle is available as a containerized Flask application.
@@ -18,19 +18,18 @@ Speedle is available as a containerized Flask application.
 ## Development
 - Build & open shell into development image:
 ```
-make dev
-make shell
+$ make dev
 ```
 
-- Targets for Black code formatter and unit tests:
+- Inside container, targets for Black code formatter and unit tests:
 ```
-make format
-make test
+# make format
+# make test
 ```
 
 - Inside container, run the Flask app manually:
 ```
-make run
+# make run
 ```
 
-- Hit in browser on `localhost:5555`
+- Hit in browser on `localhost:5555` :fire:

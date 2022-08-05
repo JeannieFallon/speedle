@@ -5,21 +5,17 @@ DEV=dev
 
 PY_FILES=`find . -name '*.py'`
 
-### REL container used to deploy app ###
+### REL container used to deploy & run app ###
 
-.PHONY: speedle # Build & run Speedle Docker container on exposed port
+.PHONY: speedle # Build image & run Speedle container on exposed port
 speedle:
 	scripts/speedle.sh $(PROJ) $(PORT)
 
 ### DEV container used to format & test ###
 
-.PHONY: dev # Build Docker development image
+.PHONY: dev # Build image & open shell into development container
 dev:
-	scripts/dev.sh  $(PROJ)_$(DEV)
-
-.PHONY: shell # Run shell into dev container with port exposed
-shell:
-	scripts/shell.sh $(PROJ)_$(DEV) $(PORT)
+	scripts/dev.sh  $(PROJ)_$(DEV) $(PORT)
 
 ### For use inside DEV container ###
 
