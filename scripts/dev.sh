@@ -2,8 +2,9 @@
 
 NAME=$1
 PORT=$2
+TAG=dev
 
-docker build -f docker/dev/Dockerfile -t ${NAME} .
+docker build -f docker/dev/Dockerfile -t ${NAME}:${TAG} .
 
 # Run shell into development image with project dir mounted
 docker run -it --rm \
@@ -12,4 +13,4 @@ docker run -it --rm \
     --workdir `pwd` \
     --name ${NAME}\
     --hostname ${NAME} \
-    ${NAME}
+    ${NAME}:${TAG}

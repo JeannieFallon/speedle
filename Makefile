@@ -2,7 +2,6 @@ PROJ=speedle
 HOST=0.0.0.0
 REL_PORT=5555
 DEV_PORT=5050
-DEV=dev
 
 PY_FILES=`find . -name '*.py'`
 
@@ -16,7 +15,7 @@ speedle:
 
 .PHONY: dev # Build image & open shell into development container
 dev:
-	scripts/dev.sh  $(PROJ)_$(DEV) $(DEV_PORT)
+	scripts/dev.sh  $(PROJ) $(DEV_PORT)
 
 ### For use inside DEV container ###
 
