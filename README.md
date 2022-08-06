@@ -32,4 +32,4 @@ $ make dev
 # make run
 ```
 
-- Hit in browser on `localhost:5555` :fire:
+- Hit in browser on `localhost:5050`.

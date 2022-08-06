@@ -5,7 +5,6 @@ FROM python:3.10.4-slim-bullseye
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -y \
-    binutils \
     make
 
 COPY docker/requirements.txt /tmp/requirements.txt
@@ -16,4 +15,4 @@ RUN python -m pip install --upgrade pip && \
 #FIXME only copy app files
 COPY . .
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5555"]
+CMD [ "python3", "-m" , "flask", "--app", "flaskr", "run", "--host=0.0.0.0", "--port=5555"]

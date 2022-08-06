@@ -13,7 +13,6 @@ RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | \
 RUN apt update && \
     DEBIAN_FRONTEND=noninteractive \
     apt install -y \
-    binutils \
     make
 
 COPY docker/requirements.txt /tmp/requirements.txt

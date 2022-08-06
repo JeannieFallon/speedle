@@ -1,21 +1,22 @@
 PROJ=speedle
 HOST=0.0.0.0
-PORT=5555
+REL_PORT=5555
+DEV_PORT=5050
 DEV=dev
 
 PY_FILES=`find . -name '*.py'`
 
 ### REL container used to deploy & run app ###
 
-.PHONY: speedle # Build image & run Speedle container on exposed port
+.PHONY: speedle # Build image & run Speedle release container
 speedle:
-	scripts/speedle.sh $(PROJ) $(PORT)
+	scripts/speedle.sh $(PROJ) $(REL_PORT)
 
 ### DEV container used to format & test ###
 
 .PHONY: dev # Build image & open shell into development container
 dev:
-	scripts/dev.sh  $(PROJ)_$(DEV) $(PORT)
+	scripts/dev.sh  $(PROJ)_$(DEV) $(DEV_PORT)
 
 ### For use inside DEV container ###
 
@@ -27,9 +28,9 @@ format:
 test:
 	python -m pytest -vv
 
-.PHONY: run # Run Speedle in DEBUG
+.PHONY: run # Run Speedle in DEBUG mode for development
 run:
-	scripts/run.sh $(HOST) $(PORT)
+	scripts/run.sh $(HOST) $(DEV_PORT)
 
 ### Helper targets ####
 
