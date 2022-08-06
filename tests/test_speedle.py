@@ -2,13 +2,11 @@ import errno
 
 import pytest
 
-import app
+import flaskr.speedle
 
 
-INDEX_PLACEHOLDER = "Speedle ~ All of the guesses, none of the time"
-
-
+@pytest.mark.skip(reason="need flask testing structure")
 class TestSpeedle:
-    def test_index(self):
-        retval = app.index()
-        assert retval == INDEX_PLACEHOLDER
+    def test_play(self):
+        retval = flaskr.play.play()
+        assert "Guess" in retval
