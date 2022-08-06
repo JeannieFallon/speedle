@@ -1,20 +1,20 @@
-import sys
-
 import flask
 
+#FIXME proper flask project structure
+import speedle.play
 
 app = flask.Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return "Speedle ~ All of the guesses, none of the time"
+    foo = speedle.play.get_foo()
+    return flask.render_template('index.html', name=foo)
 
 
 def main():
     app.run()
-    return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
