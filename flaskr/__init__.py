@@ -17,11 +17,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/")
-    def index():
-        foo = "Clarice"
-        return flask.render_template("index.html", name=foo)
-
+    # Register blueprints
     from . import speedle
 
     app.register_blueprint(speedle.bp)

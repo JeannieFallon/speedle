@@ -6,7 +6,7 @@ bp = flask.Blueprint("speedle", __name__, url_prefix="/")
 
 
 @bp.route("/", methods=(["GET", "POST"]))
-def speedle():
+def index():
     if flask.request.method == "POST":
         guess = flask.request.form["guess"]
 
@@ -19,7 +19,8 @@ def speedle():
 
         flask.flash(error)
 
-        return flask.render_template("index.html")
+    name = "Clarice"
+    return flask.render_template("speedle/index.html", name=name)
 
 
 @bp.route("/success", methods=(["GET", "POST"]))
