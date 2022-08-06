@@ -5,19 +5,32 @@
 {% endblock %}
 
 {% block content %}
-    <!--
-    <form method="post">
-        <label for="username">Username</label>
-        <input name="username" id="username" required>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-        <input type="submit" value="Register">
-    </form>
-    -->
-    <p>Hello, {{ name }}.</p>
-    <form method="post">
-        <label for="guess">Guess</label>
-        <input name="guess" id="guess" required>
-        <input type="submit" value="Submit">
-    </form>
+    <div>
+        <p>Hello, {{ name }}.</p>
+    </div>
+    <div id="form-post-div">
+        <form method="post">
+            <label for="guess">Guess</label>
+            <input name="guess" id="guess" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="result-div">
+        <p><label id="result"></label></p>
+    </div>
+    <div id="foo" class="alert alert-primary"></div>
+    </div>
+    <div id="py-script-div">
+        <py-script>
+            bar = 'PyScript is slow af'
+            pyscript.write('foo', f'The message is: {bar}')
+
+            def verify_guess(guess):
+                answer='alice'
+                return 'Correct' if guess == answer else 'Wrong'
+
+            pyscript.write('result', f"{verify_guess('nope')}")
+
+        </py-script>
+    </div>
 {% endblock %}
