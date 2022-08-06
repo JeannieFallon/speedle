@@ -11,6 +11,6 @@ docker run -it --rm \
     --publish ${PORT}:${PORT} \
     --volume `pwd`:`pwd` \
     --workdir `pwd` \
-    --name ${NAME}\
+    --name ${NAME}_${TAG}\
     --hostname ${NAME} \
     ${NAME}:${TAG}
