@@ -28,6 +28,10 @@ format:
 test:
 	python -m pytest -vv
 
+.PHONY: coverage # Run unit tests, and check test coverage
+coverage:
+	python -m coverage run -m pytest -vv; coverage report
+
 .PHONY: run # Run Speedle in DEBUG mode for development
 run:
 	scripts/run.sh $(HOST) $(DEV_PORT)

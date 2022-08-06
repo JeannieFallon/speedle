@@ -2,11 +2,30 @@ import errno
 
 import pytest
 
-import flaskr.speedle
+from flaskr import create_app
 
 
-@pytest.mark.skip(reason="need flask testing structure")
-class TestSpeedle:
-    def test_play(self):
-        retval = flaskr.play.play()
-        assert "Guess" in retval
+class TestBasic:
+    def test_config(self):
+        assert not create_app().testing
+        assert create_app({"TESTING": True}).testing
+
+    def test_index(self, client):
+        response = client.get("/")
+        assert b"Hello, Clarice" in response.data
+
+    # FIXME success page should be blocked if not from submission
+    def test_success(self, client):
+        response = client.get("/success")
+        assert b"Success" in response.data
+
+    def test_about(self, client):
+        response = client.get("/about")
+        assert b"About" in response.data
+
+
+class TestIndex:
+    def test_success(self, client, app):
+        assert client.get("/").status_code == 200
+        response = client.post("/", data={"guess": "alice"})
+        assert response.headers["Location"] == "/success"

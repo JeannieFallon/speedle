@@ -30,5 +30,5 @@ def success():
 
 @bp.route("/about", methods=(["GET"]))
 def about():
-    about = 'Turn me into a constant'
+    about = "Turn me into a constant"
     return flask.render_template("speedle/about.html", about=about)
