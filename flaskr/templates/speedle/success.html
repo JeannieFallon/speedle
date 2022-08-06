@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Success{% endblock %}</h1>
+    <h2>{% block title %}Success{% endblock %}</h2>
 {% endblock %}
 
 {% block content %}
   <div>
       <p>Successful entry</p>
-      <a href="{{ url_for('index') }}">Index</a>
   </div>
 {% endblock %}

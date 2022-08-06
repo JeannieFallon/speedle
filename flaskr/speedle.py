@@ -2,7 +2,7 @@ import functools
 
 import flask
 
-bp = flask.Blueprint("speedle", __name__, url_prefix="/speedle")
+bp = flask.Blueprint("speedle", __name__, url_prefix="/")
 
 
 @bp.route("/", methods=(["GET", "POST"]))
