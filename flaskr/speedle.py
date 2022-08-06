@@ -26,3 +26,9 @@ def index():
 @bp.route("/success", methods=(["GET", "POST"]))
 def success():
     return flask.render_template("speedle/success.html")
+
+
+@bp.route("/about", methods=(["GET"]))
+def about():
+    about = 'Turn me into a constant'
+    return flask.render_template("speedle/about.html", about=about)

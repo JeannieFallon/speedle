@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h2>{% block title %}About{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <div>
+      <p>{{ about }}.</p>
+  </div>
+{% endblock %}
