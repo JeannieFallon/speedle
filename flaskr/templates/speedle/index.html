@@ -1,36 +1,58 @@
 {% extends 'base.html' %}
 
-{% block header %}
-    <h2>{% block title %}Index{% endblock %}</h2>
-{% endblock %}
-
 {% block content %}
-    <div>
-        <p>Hello, {{ name }}.</p>
-    </div>
+
+
     <div id="form-post-div">
         <form method="post">
-            <label for="guess">Guess</label>
+            <label for="guess"></label>
             <input name="guess" id="guess" required>
             <input type="submit" value="Submit">
         </form>
     </div>
+
     <div id="result-div">
         <p><label id="result"></label></p>
     </div>
-    <div id="foo" class="alert alert-primary"></div>
+
+    <div id="backend-test-div">
+        <p>This text is {{ name }}.</p>
     </div>
+
+    <div id="dynamic-test-div">
+        <div id="output">
+            <py-script>
+                out = document.createElement('p')
+                out.innerText = "This text is dynamic."
+                document.getElementById("output").append(out)
+            </py-script>
+        </div>
+    </div>
+
+    <div id="bar" class="alert alert-primary"></div>
+    </div>
+
     <div id="py-script-div">
+        <!-- FIXME figure out how to import local module in <py-env> blck -->
         <py-script>
-            bar = 'PyScript is slow af'
-            pyscript.write('foo', f'The message is: {bar}')
+            static = 'static'
+            pyscript.write('bar', f'This text is {static}.')
 
-            def verify_guess(guess):
-                answer='alice'
-                return 'Correct' if guess == answer else 'Wrong'
+            import time
+            import pyodide
 
-            pyscript.write('result', f"{verify_guess('nope')}")
+            def selectChange(event):
+                guess = document.getElementById("select").value
+                print(guess)
+
+            def setup():
+                change_proxy = pyodide.create_proxy(selectChange)
+                e = document.getElementById("guess")
+                e.addEventListener("change", change_proxy)
+
+            setup()
 
         </py-script>
     </div>
+    
 {% endblock %}

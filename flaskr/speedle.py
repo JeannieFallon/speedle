@@ -19,7 +19,7 @@ def index():
 
         flask.flash(error)
 
-    name = "Clarice"
+    name = "from the back end"
     return flask.render_template("speedle/index.html", name=name)
 
 
