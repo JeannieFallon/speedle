@@ -4,6 +4,7 @@ import pytest
 
 from flaskr import create_app
 
+TEST_GUESS = 'AAAAA'
 
 class TestBasic:
     def test_config(self):
@@ -12,7 +13,7 @@ class TestBasic:
 
     def test_index(self, client):
         response = client.get("/")
-        assert b"Hello, Clarice" in response.data
+        assert b"Speedle" in response.data
 
     # FIXME success page should be blocked if not from submission
     def test_success(self, client):
@@ -27,5 +28,5 @@ class TestBasic:
 class TestIndex:
     def test_success(self, client, app):
         assert client.get("/").status_code == 200
-        response = client.post("/", data={"guess": "alice"})
+        response = client.post("/", data={"guess": TEST_GUESS})
         assert response.headers["Location"] == "/success"

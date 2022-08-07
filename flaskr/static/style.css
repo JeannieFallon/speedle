@@ -5,7 +5,6 @@ body {
     vertical-align: middle;
     margin: 0 auto;
 }
-
 h1 { font-family: sans-serif; font-size: 3.5em; color: #377ba8; margin: 1rem 0; }
 a { color: #377ba8; }
 hr { border: none; border-top: 1px solid lightgray; }
@@ -15,6 +14,14 @@ hr { border: none; border-top: 1px solid lightgray; }
     font-size: 2.5em;
     color: #47f53b;
     margin: 1rem 0;
+}
+.nav-div {
+    display: flex;
+    align-items: center;
+    font-family: "Impact", fantasy;
+    font-size: 1.5em;
+    margin: 1rem 0;
+    color: #d9d9d9;
 }
 .centered-wrapper {
     position: relative;
@@ -32,13 +39,29 @@ hr { border: none; border-top: 1px solid lightgray; }
     vertical-align: middle;
     color: #fff;
 }
-.output {
-}
-.nav-div {
-    display: flex;
+.puzzle-date-div {
+    display: inline-block;
     align-items: center;
+    font-family: "Impact", fantasy;
+    font-size: 1.5em;
+    margin: 1rem 0;
+    color: #d9d9d9;
 }
-
+.letters-div {
+    display: table;
+}
+.letter-div {
+    display: table-cell;
+}
+.letter-input {
+    border: 2px solid;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 0.25rem;
+    min-width: 50px;
+    max-width: 50px;
+    padding: 0.5rem;
+}
 .content { padding: 0 1rem 1rem; }
 .content > header { border-bottom: 1px solid lightgray; display: flex; align-items: flex-end; }
 .content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
@@ -58,5 +81,4 @@ hr { border: none; border-top: 1px solid lightgray; }
 .content textarea { min-height: 12em; resize: vertical; }
 
 input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; color: #377ba8 }
-
+input[type=submit] { align-self: start; min-width: 10em; color: #151515 }

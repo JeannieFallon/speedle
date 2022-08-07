@@ -1,58 +1,53 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-
-    <div id="form-post-div">
-        <form method="post">
-            <label for="guess"></label>
-            <input name="guess" id="guess" required>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
-
-    <div id="result-div">
-        <p><label id="result"></label></p>
-    </div>
-
-    <div id="backend-test-div">
-        <p>This text is {{ name }}.</p>
-    </div>
-
-    <div id="dynamic-test-div">
-        <div id="output">
-            <py-script>
-                out = document.createElement('p')
-                out.innerText = "This text is dynamic."
-                document.getElementById("output").append(out)
-            </py-script>
-        </div>
-    </div>
-
-    <div id="bar" class="alert alert-primary"></div>
-    </div>
-
-    <div id="py-script-div">
-        <!-- FIXME figure out how to import local module in <py-env> blck -->
+    <div id="puzzle-date-div" class="puzzle-date-div">
         <py-script>
-            static = 'static'
-            pyscript.write('bar', f'This text is {static}.')
+            import datetime
 
-            import time
-            import pyodide
+            today = datetime.datetime.now().strftime("%m/%d/%Y")
 
-            def selectChange(event):
-                guess = document.getElementById("select").value
-                print(guess)
-
-            def setup():
-                change_proxy = pyodide.create_proxy(selectChange)
-                e = document.getElementById("guess")
-                e.addEventListener("change", change_proxy)
-
-            setup()
-
+            puzzle_date = document.createElement('p')
+            puzzle_date.innerText = f"Puzzle for {today}"
+            document.getElementById("puzzle-date-div").append(puzzle_date)
         </py-script>
     </div>
-    
+
+    <!-- TODO create individual columns for each letter so that elements can append vertically -->
+    <div id="letters-div" class="letters-div">
+        <div id="letter-0-div" class="letter-div">
+            <input class="letter-input" name="letter-0" id="letter-0" required>
+        </div>
+        <div id="letter-1-div" class="letter-div">
+            <input class="letter-input" name="letter-1" id="letter-1" required>
+        </div>
+        <div id="letter-2-div" class="letter-div">
+            <input class="letter-input" name="letter-2" id="letter-2" required>
+        </div>
+        <div id="letter-3-div" class="letter-div">
+            <input class="letter-input" name="letter-3" id="letter-3" required>
+        </div>
+        <div id="letter-4-div" class="letter-div">
+            <input class="letter-input" name="letter-4" id="letter-4" required>
+        </div>
+    </div>
+    <div id="pyscript-div">
+        <py-script>
+            def check_letter(guess):
+                #TODO check if guess in answer arr, then if guess is curr ans
+                color = "green"
+                return color
+
+            #TODO set eventlistener to grab element on submit
+            guess = "A"
+
+            #TODO set css color of element according to check_letter(guess)
+            color = check_letter(guess)
+
+            letter_0 = document.createElement('p')
+            letter_0.innerText = guess
+            document.getElementById("letter-0-div").append(letter_0)
+        </py-script>
+    </div>
+
 {% endblock %}
