@@ -33,3 +33,8 @@ $ make dev
 ```
 
 - Hit in browser on `localhost:5050`.
+
+### Tech Stack
+- [Python 3.10.4](https://docs.python.org/3/)
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [PyScript](https://pyscript.net/)
